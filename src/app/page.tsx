@@ -1,3 +1,4 @@
+import Carousel from '@/components/Carousel/Carousel';
 import Layout from '@/components/Layout/Layout';
 
 import styles from './styles.module.scss';
@@ -19,7 +20,9 @@ const HomePage = () => {
           </h2>
         </div>
       </header>
-      <section className='layouted'></section>
+      <section className={`${styles.bestseller} layouted`}>
+        <Carousel heading='Bestseller' />
+      </section>
     </Layout>
   );
 };

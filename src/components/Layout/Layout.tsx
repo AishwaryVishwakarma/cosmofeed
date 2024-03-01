@@ -5,7 +5,7 @@
 // import {useAppDispatch} from '@/redux/store';
 // import React from 'react';
 // import Cart from '../Cart/Cart';
-// import Footer from '../Footer/Footer';
+import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import type {LayoutProps} from './types';
 
@@ -35,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({
         {children}
       </main>
       {/* <Cart /> */}
-      {/* {showFooter && <Footer className={footerStyles} />} */}
+      {showFooter && <Footer className={footerStyles} />}
     </>
   );
 };

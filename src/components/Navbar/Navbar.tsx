@@ -1,7 +1,6 @@
 'use client';
 
-import {Profile} from '@/assets/icons';
-import {Cart} from '@/assets/icons/Cart';
+import {Cart, Profile} from '@/assets/icons';
 import Link from 'next/link';
 import React from 'react';
 

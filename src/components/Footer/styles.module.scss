@@ -1,0 +1,13 @@
+.footer {
+  display: grid;
+  place-items: center;
+  background: #000;
+  font-family: var(--helvetica);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  padding: 15px 10%;
+}
