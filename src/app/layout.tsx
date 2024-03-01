@@ -6,7 +6,12 @@ import './globals.scss';
 
 const helvetica = localFont({
   src: '../../public/fonts/Helvetica-Neue.otf',
-  variable: '--gotham',
+  variable: '--helvetica',
+});
+
+const hiragino = localFont({
+  src: '../../public/fonts/Hiragino-Kaku-Gothic-StdN.otf',
+  variable: '--hiragino',
 });
 
 export const metadata: Metadata = {
@@ -23,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${helvetica.variable}`}>
+      <body className={`${helvetica.variable} ${hiragino.variable}`}>
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
