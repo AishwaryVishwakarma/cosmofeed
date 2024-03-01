@@ -62,6 +62,7 @@ const Carousel: React.FC<Props> = (data) => {
           <li className={styles.slide} data-item='3'>
             <div className={styles.videoContainer}>
               <video autoPlay muted loop playsInline controls={false}>
+                <source src='/cup.webm' type='video/webm' />
                 <source src='/cup.mp4' type='video/mp4' />
               </video>
               <div className={styles.backdrop} />
@@ -72,6 +73,7 @@ const Carousel: React.FC<Props> = (data) => {
             </div>
             <div className={`${styles.videoContainer} ${styles.sewing}`}>
               <video autoPlay muted loop playsInline controls={false}>
+                <source src='/sewing.webm' type='video/webm' />
                 <source src='/sewing.mp4' type='video/mp4' />
               </video>
               <div className={styles.backdrop} />

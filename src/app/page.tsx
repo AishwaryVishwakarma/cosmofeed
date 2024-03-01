@@ -8,6 +8,7 @@ const HomePage = () => {
     <Layout className={styles.homePage}>
       <header className={styles.hero}>
         <video autoPlay muted loop playsInline controls={false}>
+          <source src='/hero.webm' type='video/webm' />
           <source src='/hero.mp4' type='video/mp4' />
         </video>
         <div className={styles.backdrop} />
