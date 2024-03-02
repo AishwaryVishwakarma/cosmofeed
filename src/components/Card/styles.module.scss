@@ -1,0 +1,77 @@
+$timing: 0.2s;
+
+@mixin flexbox($direction: row, $align: center, $justify: center) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+.card {
+  @include flexbox(column, flex-start, flex-start);
+  width: 100%;
+  gap: 15px;
+
+  .imageContainer {
+    position: relative;
+    isolation: isolate;
+    height: 250px;
+    width: 100%;
+
+    &:hover img:last-child {
+      opacity: 0;
+    }
+
+    img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      opacity: 1;
+      transition: all $timing ease-in-out;
+
+      &:first-child {
+        z-index: 0;
+      }
+
+      &:last-child {
+        z-index: 1;
+      }
+    }
+  }
+
+  p {
+    font-family: var(--helvetica);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+
+  .description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .price {
+    font-weight: 600;
+  }
+
+  .cta {
+    padding: 10px 16px 10px 16px;
+    border: 1.25px solid #000;
+    font-family: var(--helvetica);
+    background: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+  }
+}

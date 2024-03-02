@@ -51,7 +51,7 @@ $timing: 0.2s;
 
   .links {
     @include flexbox();
-    padding: 20px 0;
+    padding: 20px 30px;
 
     .logoLink {
       font-family: var(--hiragino);

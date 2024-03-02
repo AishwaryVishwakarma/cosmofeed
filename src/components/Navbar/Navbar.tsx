@@ -29,17 +29,6 @@ const TABS = [
   },
 ];
 
-const UTILS = [
-  {
-    icon: <Profile />,
-    to: '/',
-  },
-  {
-    icon: <Cart />,
-    to: '/cart',
-  },
-];
-
 const Navbar: React.FC<{
   className?: string;
 }> = ({className}) => {
@@ -94,11 +83,12 @@ const Navbar: React.FC<{
             ))}
           </ul>
           <ul className={styles.utilLinks}>
-            {UTILS.map(({icon, to}, idx) => (
-              <li key={idx}>
-                <Link href={to}>{icon}</Link>
-              </li>
-            ))}
+            <li>
+              <Profile aria-hidden />
+            </li>
+            <li role='button' title='Cart'>
+              <Cart aria-hidden />
+            </li>
           </ul>
         </div>
       </div>

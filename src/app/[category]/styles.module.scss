@@ -1,0 +1,56 @@
+@mixin flexbox($direction: row, $align: center, $justify: center) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+.categoryPage {
+  padding: 200px 30px 0;
+
+  .content {
+    @include flexbox(column, center, flex-start);
+    gap: 50px;
+
+    h1 {
+      width: 100%;
+      font-family: var(--helvetica);
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 34px;
+      letter-spacing: 0.1em;
+      text-align: left;
+      text-transform: capitalize;
+    }
+
+    .loadingContainer {
+      @include flexbox();
+      height: 30px;
+      margin-block: 30px;
+
+      .spinner {
+        border-color: #000;
+        border-top-color: transparent;
+        height: 30px;
+      }
+    }
+
+    .productsContainer {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 50px 30px;
+      place-items: center;
+    }
+  }
+}
+
+.navbar > div:last-child {
+  background: #000 !important;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
