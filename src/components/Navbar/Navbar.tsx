@@ -1,8 +1,9 @@
 'use client';
 
-import CategoryPage from '@/app/[category]/page';
 import {Cart, Profile} from '@/assets/icons';
+import {setCart} from '@/redux/features/cartSlice';
 import type {ProductCategory} from '@/redux/features/productsSlice';
+import {useAppDispatch} from '@/redux/store';
 import Link from 'next/link';
 import React from 'react';
 
@@ -39,6 +40,8 @@ const TABS: Tab[] = [
 const Navbar: React.FC<{
   className?: string;
 }> = ({className}) => {
+  const dispatch = useAppDispatch();
+
   const logoContainerRef = React.useRef<HTMLDivElement | null>(null);
   const logoRef = React.useRef<HTMLAnchorElement | null>(null);
 
@@ -93,7 +96,14 @@ const Navbar: React.FC<{
             <li>
               <Profile aria-hidden />
             </li>
-            <li role='button' title='Cart'>
+            <li
+              role='button'
+              title='Cart'
+              onClick={() => dispatch(setCart(true))}
+              style={{
+                cursor: 'pointer',
+              }}
+            >
               <Cart aria-hidden />
             </li>
           </ul>

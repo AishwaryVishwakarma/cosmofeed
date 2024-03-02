@@ -1,0 +1,108 @@
+@mixin flexbox($direction: row, $align: center, $justify: center) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+.content {
+  padding: 200px 30px 80px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+
+  h1 {
+    font-family: var(--helvetica);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 34px;
+    letter-spacing: 0.1em;
+    text-align: left;
+    grid-column: span 2;
+  }
+
+  form {
+    display: grid;
+    gap: 30px;
+
+    > div {
+      @include flexbox(row, flex-start, flex-start);
+      gap: 30px;
+    }
+
+    label {
+      margin-top: 30px;
+      color: #000;
+      font-family: var(--helvetica);
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 350;
+      line-height: 20px; /* 111.111% */
+      letter-spacing: 0.05em;
+
+      @media (max-width: 800px) {
+        margin-top: 20px;
+        font-size: 14px;
+      }
+    }
+
+    input,
+    select {
+      font-family: var(--helvetica);
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 20px; /* 125% */
+      margin-top: 10px;
+      font-style: normal;
+      height: 50px;
+      padding: 8px 12px;
+      letter-spacing: 0.05em;
+      border: 1px solid rgb(0, 0, 0);
+      width: 100%;
+
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      @media (max-width: 800px) {
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    }
+
+    .inputError {
+      border-color: red !important;
+    }
+
+    .error {
+      font-family: var(--helvetica);
+      font-size: 16px;
+      font-weight: 500;
+      color: red;
+      margin-top: 5px;
+      letter-spacing: 0.05em;
+    }
+
+    .cta {
+      font-family: var(--helvetica);
+      color: #fff;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 20px; /* 125% */
+      margin-top: 10px;
+      font-style: normal;
+      height: 50px;
+      padding: 8px 12px;
+      letter-spacing: 0.05em;
+      width: 100%;
+      background: #000;
+      outline: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.navbar > div:last-child {
+  background: #000 !important;
+}

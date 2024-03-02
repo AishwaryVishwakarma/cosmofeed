@@ -53,7 +53,6 @@ const CategoryPage: React.FC<Page> = ({params}) => {
     >
       <div className={styles.content}>
         <h1>{params.category}</h1>
-
         <section className={styles.productsContainer}>
           {products.map((product) => {
             return (
