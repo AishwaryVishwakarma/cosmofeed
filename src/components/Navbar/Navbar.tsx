@@ -1,31 +1,38 @@
 'use client';
 
+import CategoryPage from '@/app/[category]/page';
 import {Cart, Profile} from '@/assets/icons';
+import type {ProductCategory} from '@/redux/features/productsSlice';
 import Link from 'next/link';
 import React from 'react';
 
 import styles from './styles.module.scss';
 
-const TABS = [
+interface Tab {
+  name: string;
+  to: ProductCategory;
+}
+
+const TABS: Tab[] = [
   {
     name: 'Tops',
-    to: '/tops',
+    to: 'tops',
   },
   {
     name: 'Furniture',
-    to: '/furniture',
+    to: 'furniture',
   },
   {
     name: 'Shoes',
-    to: '/mens-shoes',
+    to: 'mens-shoes',
   },
   {
     name: 'Skincare',
-    to: '/skincare',
+    to: 'skincare',
   },
   {
     name: 'Sunglasses',
-    to: '/sunglasses',
+    to: 'sunglasses',
   },
 ];
 
@@ -76,7 +83,7 @@ const Navbar: React.FC<{
           <ul className={styles.pageLinks}>
             {TABS.map(({name, to}) => (
               <li key={name}>
-                <Link href={to} id={`Go to ${name} page`}>
+                <Link href={'/' + to} id={`Go to ${name} page`}>
                   {name}
                 </Link>
               </li>

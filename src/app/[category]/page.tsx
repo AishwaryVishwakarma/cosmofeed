@@ -4,13 +4,16 @@ import {Spinner} from '@/assets/loaders';
 import Card from '@/components/Card/Card';
 import Layout from '@/components/Layout/Layout';
 import useProduct from '@/hooks/useProduct';
+import type {ProductCategory} from '@/redux/features/productsSlice';
 import {isArrayEmpty} from '@/utils';
 import React from 'react';
 
 import styles from './styles.module.scss';
 
 const CategoryPage: React.FC<Page> = ({params}) => {
-  const {products, loading, error, fetchMore} = useProduct(params.category);
+  const {products, loading, error, fetchMore} = useProduct(
+    params.category as ProductCategory
+  );
 
   const observerRef = React.useRef<HTMLDivElement | null>(null);
 
