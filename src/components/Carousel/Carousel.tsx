@@ -69,8 +69,7 @@ const Carousel: React.FC<Props> = (data) => {
               currentIdx >=
                 (isMobile
                   ? (mobileSlides?.length ?? desktopSlides.length) - 1
-                  : desktopSlides.length - 1) -
-                  1 && styles.disabled
+                  : desktopSlides.length - 1) && styles.disabled
             }`}
             onClick={next}
           />
