@@ -11,6 +11,12 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 
+  @media (max-width: 800px) {
+    @include flexbox(column, flex-start, flex-start);
+    padding: 150px 30px 40px;
+    gap: 20px;
+  }
+
   h1 {
     font-family: var(--helvetica);
     font-size: 32px;
@@ -19,15 +25,34 @@
     letter-spacing: 0.1em;
     text-align: left;
     grid-column: span 2;
+
+    @media (max-width: 800px) {
+      font-size: 28px;
+    }
   }
 
   form {
     display: grid;
     gap: 30px;
+    width: 100%;
+
+    @media (max-width: 800px) {
+      gap: 20px;
+
+      span {
+        width: 100%;
+      }
+    }
 
     > div {
       @include flexbox(row, flex-start, flex-start);
       gap: 30px;
+
+      @media (max-width: 800px) {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+      }
     }
 
     label {
@@ -99,6 +124,10 @@
       outline: none;
       border: none;
       cursor: pointer;
+
+      @media (max-width: 800px) {
+        font-size: 22px;
+      }
     }
   }
 }

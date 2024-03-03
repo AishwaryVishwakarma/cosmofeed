@@ -13,14 +13,24 @@ $timing: 0.2s;
   height: 100%;
   gap: 15px;
 
+  @media (max-width: 800px) {
+    gap: 10px;
+  }
+
   .imageContainer {
     position: relative;
     isolation: isolate;
     height: 250px;
     width: 100%;
 
-    &:hover img:last-child {
-      opacity: 0;
+    @media (max-width: 800px) {
+      height: 180px;
+    }
+
+    @media (hover: hover) {
+      &:hover img:last-child {
+        opacity: 0;
+      }
     }
 
     img {

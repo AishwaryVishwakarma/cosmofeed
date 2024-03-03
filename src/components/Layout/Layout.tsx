@@ -1,8 +1,8 @@
 'use client';
 
 import {resetCartState} from '@/redux/features/cartSlice';
+import {resetNavbarState} from '@/redux/features/navbarSlice';
 import {useAppDispatch} from '@/redux/store';
-// import {resetNavbarState} from '@/redux/features/navbarSlice';
 import React from 'react';
 
 import Cart from '../Cart/Cart';
@@ -26,7 +26,7 @@ const Layout: React.FC<LayoutProps> = ({
   // Using this to reset the cart and mobile navbar state (show and touched) so that it won't show up when the page is changed
   React.useEffect(() => {
     dispatch(resetCartState());
-    // dispatch(resetNavbarState());
+    dispatch(resetNavbarState());
   }, [dispatch]);
 
   return (
