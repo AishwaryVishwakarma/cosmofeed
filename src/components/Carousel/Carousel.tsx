@@ -1,24 +1,41 @@
 'use client';
 
 import {Caret} from '@/assets/icons';
+import useMediaQuery from '@/hooks/useMediaQuery';
 import React, {type HTMLAttributes} from 'react';
 
 import styles from './styles.module.scss';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   heading: string;
-  slidesData: JSX.Element[];
+  slidesData: {
+    desktop: JSX.Element[];
+    mobile?: JSX.Element[];
+  };
 }
 
 const Carousel: React.FC<Props> = (data) => {
-  const {heading, slidesData = [], className, ...rest} = data ?? {};
+  const {
+    heading,
+    slidesData: {desktop: desktopSlides, mobile: mobileSlides},
+    className,
+    ...rest
+  } = data ?? {};
+
+  const isMobile = useMediaQuery('(max-width: 800px)');
 
   const slidesRef = React.useRef<HTMLUListElement | null>(null);
 
   const [currentIdx, setCurrentIdx] = React.useState(0);
 
   const next = (): void => {
-    if (currentIdx >= slidesData.length - 1) return;
+    if (
+      currentIdx >=
+      (isMobile
+        ? (mobileSlides?.length ?? desktopSlides.length) - 1
+        : desktopSlides.length - 1)
+    )
+      return;
 
     setCurrentIdx((prev): typeof prev => prev + 1);
   };
@@ -48,15 +65,27 @@ const Carousel: React.FC<Props> = (data) => {
             className={currentIdx <= 0 ? styles.disabled : ''}
           />
           <Caret
-            className={`${styles.rightIcon} ${currentIdx >= slidesData.length - 1 && styles.disabled}`}
+            className={`${styles.rightIcon} ${
+              currentIdx >=
+                (isMobile
+                  ? (mobileSlides?.length ?? desktopSlides.length) - 1
+                  : desktopSlides.length - 1) -
+                  1 && styles.disabled
+            }`}
             onClick={next}
           />
         </div>
       </div>
       <div className={styles.slidesContainer}>
-        <ul ref={slidesRef} className={styles.slides}>
-          {slidesData.map((slide) => slide)}
-        </ul>
+        {isMobile ? (
+          <ul ref={slidesRef} className={`${styles.slides} hideOnDesktop`}>
+            {(mobileSlides ?? desktopSlides).map((slide) => slide)}
+          </ul>
+        ) : (
+          <ul ref={slidesRef} className={`${styles.slides} hideOnMobile`}>
+            {desktopSlides.map((slide) => slide)}
+          </ul>
+        )}
       </div>
     </div>
   );

@@ -1,9 +1,11 @@
 'use client';
 
-import {Cart, Profile} from '@/assets/icons';
+import {Cart, Cross, HamMenu, Profile} from '@/assets/icons';
+import useMediaQuery from '@/hooks/useMediaQuery';
 import {setCart} from '@/redux/features/cartSlice';
+import {setNavbar} from '@/redux/features/navbarSlice';
 import type {ProductCategory} from '@/redux/features/productsSlice';
-import {useAppDispatch} from '@/redux/store';
+import {useAppDispatch, useAppSelector} from '@/redux/store';
 import Link from 'next/link';
 import React from 'react';
 
@@ -40,10 +42,22 @@ const TABS: Tab[] = [
 const Navbar: React.FC<{
   className?: string;
 }> = ({className}) => {
+  const isMobile = useMediaQuery('(max-width: 800px)');
+
   const dispatch = useAppDispatch();
 
+  const {isNavbarTouched, navbarOpen} = useAppSelector((state) => state.navbar);
+
+  // Uppermost logo
   const logoContainerRef = React.useRef<HTMLDivElement | null>(null);
+
+  // Logo which is visible on links conainer
   const logoRef = React.useRef<HTMLAnchorElement | null>(null);
+
+  const [hamState, setHamState] = React.useState({
+    isOpen: false,
+    isClicked: false,
+  });
 
   React.useEffect((): (() => void) => {
     const handleScroll = (): void => {
@@ -73,8 +87,51 @@ const Navbar: React.FC<{
       >
         <Link href='/'>urban</Link>
       </div>
-      <div className={`${styles.tabs} layouted`}>
-        <div className={styles.links}>
+      {!isMobile ? (
+        <div className={`${styles.tabs} layouted hideOnMobile`}>
+          <div className={styles.links}>
+            <Link
+              ref={logoRef}
+              href='/'
+              className={styles.logoLink}
+              data-visible='false'
+            >
+              urban
+            </Link>
+            <ul className={styles.pageLinks}>
+              {TABS.map(({name, to}) => (
+                <li key={name}>
+                  <Link href={'/' + to} id={`Go to ${name} page`}>
+                    {name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <ul className={styles.utilLinks}>
+              <li>
+                <Profile aria-hidden />
+              </li>
+              <li
+                role='button'
+                title='Cart'
+                onClick={() => dispatch(setCart(true))}
+                style={{
+                  cursor: 'pointer',
+                }}
+              >
+                <Cart aria-hidden />
+              </li>
+            </ul>
+          </div>
+        </div>
+      ) : (
+        <div className={`${styles.tabs} hideOnDesktop`}>
+          <HamMenu
+            id='navigation-menu-button'
+            onClick={(e) => dispatch(setNavbar(true))}
+            aria-label='Navigation Menu Button'
+            role='button'
+          />
           <Link
             ref={logoRef}
             href='/'
@@ -83,19 +140,7 @@ const Navbar: React.FC<{
           >
             urban
           </Link>
-          <ul className={styles.pageLinks}>
-            {TABS.map(({name, to}) => (
-              <li key={name}>
-                <Link href={'/' + to} id={`Go to ${name} page`}>
-                  {name}
-                </Link>
-              </li>
-            ))}
-          </ul>
           <ul className={styles.utilLinks}>
-            <li>
-              <Profile aria-hidden />
-            </li>
             <li
               role='button'
               title='Cart'
@@ -107,8 +152,40 @@ const Navbar: React.FC<{
               <Cart aria-hidden />
             </li>
           </ul>
+          {isNavbarTouched && navbarOpen && (
+            <>
+              <div
+                className={styles.overlayBg}
+                onClick={(e) => dispatch(setNavbar(false))}
+              />
+              <div
+                className={styles.hamMenu}
+                id='navigation-menu'
+                role='region'
+                aria-labelledby='navigation-menu-button'
+              >
+                <Cross
+                  onClick={(e) => dispatch(setNavbar(false))}
+                  aria-label='Close Navigation Menu'
+                  role='button'
+                />
+                <ul className={styles.pageLinks}>
+                  {TABS.map((tab) => {
+                    const {name, to} = tab;
+                    return (
+                      <li key={name}>
+                        <Link href={'/' + to} id={`Go to ${name} page`}>
+                          {name}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </>
+          )}
         </div>
-      </div>
+      )}
     </nav>
   );
 };

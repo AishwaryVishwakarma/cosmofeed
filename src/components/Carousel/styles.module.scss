@@ -9,6 +9,10 @@
   display: grid;
   gap: 30px;
 
+  @media (max-width: 800px) {
+    gap: 20px;
+  }
+
   .header {
     @include flexbox(row, center, space-between);
 

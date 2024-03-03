@@ -3,6 +3,7 @@ import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 
 import cartReducer from './features/cartSlice';
 import checkoutReducer from './features/checkoutSlice';
+import navbarReducer from './features/navbarSlice';
 import productReducer from './features/productsSlice';
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
     cart: cartReducer,
     checkout: checkoutReducer,
     products: productReducer,
+    navbar: navbarReducer,
   },
 });
 

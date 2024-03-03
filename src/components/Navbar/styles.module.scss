@@ -11,7 +11,7 @@ $timing: 0.2s;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 99;
 
   .logoContainer {
     width: 100%;
@@ -24,6 +24,13 @@ $timing: 0.2s;
     padding: 15px 10%;
     background: #fff;
     transition: all $timing ease-in-out;
+
+    @media (max-width: 800px) {
+      font-size: 28px;
+      line-height: 40px;
+      padding: 10px 30px;
+      height: 60px;
+    }
 
     a {
       display: block;
@@ -47,26 +54,31 @@ $timing: 0.2s;
   .tabs {
     background: transparent;
     transition: all $timing ease-in-out;
+
+    @media (max-width: 800px) {
+      @include flexbox(row, center, space-between);
+      padding: 15px 30px;
+    }
   }
 
   .links {
     @include flexbox();
     padding: 20px 30px;
+  }
 
-    .logoLink {
-      font-family: var(--hiragino);
-      color: #fff;
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 20px;
-      letter-spacing: 0em;
-      text-decoration: none;
-      opacity: 1;
-      transition: all $timing ease-in-out;
+  .logoLink {
+    font-family: var(--hiragino);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-decoration: none;
+    opacity: 1;
+    transition: all $timing ease-in-out;
 
-      &[data-visible='false'] {
-        opacity: 0;
-      }
+    &[data-visible='false'] {
+      opacity: 0;
     }
   }
 
@@ -77,6 +89,11 @@ $timing: 0.2s;
     gap: 50px;
     list-style: none;
 
+    @media (max-width: 800px) {
+      @include flexbox(column, center, center);
+      gap: 30px;
+    }
+
     li {
       font-family: var(--helvetica);
       color: #fff;
@@ -85,6 +102,11 @@ $timing: 0.2s;
       line-height: 20px;
       letter-spacing: 0em;
       text-align: center;
+
+      @media (max-width: 800px) {
+        color: #000;
+        text-align: left;
+      }
 
       a {
         display: block;
@@ -99,6 +121,43 @@ $timing: 0.2s;
     @include flexbox();
     gap: 30px;
     list-style: none;
+
+    @media (max-width: 800px) {
+      gap: 20px;
+    }
+  }
+}
+
+.overlayBg {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background: rgba($color: #000000, $alpha: 0.4);
+  opacity: 0;
+  animation: fade-in $timing linear forwards;
+}
+
+.hamMenu {
+  @include flexbox(column, center, flex-start);
+  width: 180px;
+  height: 100vh;
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  padding: 30px 10px;
+  background: #fff;
+  gap: 30px;
+  transform: translateX(-100%);
+  animation: slide-in $timing linear forwards;
+
+  > svg {
+    width: 20px;
+    height: 20.742px;
+    flex-shrink: 0;
   }
 }
 
@@ -109,5 +168,17 @@ $timing: 0.2s;
 
   .links a:hover {
     transform: scale(1.1);
+  }
+}
+
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  100% {
+    transform: translateX(0);
   }
 }

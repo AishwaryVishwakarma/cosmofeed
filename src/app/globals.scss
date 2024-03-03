@@ -29,3 +29,15 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+
+@media (min-width: 800px) {
+  .hideOnDeskto {
+    display: none !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .hideOnMobile {
+    display: none !important;
+  }
+}

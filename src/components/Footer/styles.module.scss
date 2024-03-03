@@ -10,4 +10,9 @@
   letter-spacing: 0.05em;
   text-align: left;
   padding: 15px 10%;
+
+  @media (max-width: 800px) {
+    padding: 15px 30px;
+    text-align: center;
+  }
 }
