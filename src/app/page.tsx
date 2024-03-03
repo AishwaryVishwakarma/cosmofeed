@@ -10,7 +10,14 @@ const slides = {
   desktop: [
     <li key={nanoid()} className={styles.slide}>
       <div className={styles.videoContainer}>
-        <video autoPlay muted loop playsInline controls={false}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={false}
+          poster='/cup.png'
+        >
           <source src='/cup.webm' type='video/webm' />
           <source src='/cup.mp4' type='video/mp4' />
         </video>
@@ -21,7 +28,14 @@ const slides = {
         </div>
       </div>
       <div className={`${styles.videoContainer} ${styles.sewing}`}>
-        <video autoPlay muted loop playsInline controls={false}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={false}
+          poster='/sewing.png'
+        >
           <source src='/sewing.webm' type='video/webm' />
           <source src='/sewing.mp4' type='video/mp4' />
         </video>
@@ -49,7 +63,14 @@ const slides = {
     </li>,
     <li key={nanoid()} className={styles.slide}>
       <div className={styles.videoContainer}>
-        <video autoPlay muted loop playsInline controls={false}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={false}
+          poster='/cup.png'
+        >
           <source src='/cup.mp4' type='video/mp4' />
         </video>
         <div className={styles.backdrop} />
@@ -61,7 +82,14 @@ const slides = {
     </li>,
     <li key={nanoid()} className={styles.slide}>
       <div className={styles.videoContainer}>
-        <video autoPlay muted loop playsInline controls={false}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={false}
+          poster='/cup.png'
+        >
           <source src='/cup.mp4' type='video/mp4' />
         </video>
         <div className={styles.backdrop} />
@@ -71,7 +99,14 @@ const slides = {
         </div>
       </div>
       <div className={`${styles.videoContainer} ${styles.sewing}`}>
-        <video autoPlay muted loop playsInline controls={false}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={false}
+          poster='/sewing.png'
+        >
           <source src='/sewing.mp4' type='video/mp4' />
         </video>
         <div className={styles.backdrop} />
@@ -100,7 +135,14 @@ const slides = {
         </div>
       </div>
       <div className={`${styles.videoContainer} ${styles.sewing}`}>
-        <video autoPlay muted loop playsInline controls={false}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={false}
+          poster='/sewing.png'
+        >
           <source src='/sewing.webm' type='video/webm' />
           <source src='/sewing.mp4' type='video/mp4' />
         </video>
@@ -113,7 +155,15 @@ const slides = {
     </li>,
     <li key={nanoid()} className={styles.slide}>
       <div className={styles.videoContainer}>
-        <video autoPlay muted loop playsInline controls={false}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={false}
+          poster='/cup.png'
+        >
+          <source src='/cup.webm' type='video/webm' />
           <source src='/cup.mp4' type='video/mp4' />
         </video>
         <div className={styles.backdrop} />
@@ -125,7 +175,14 @@ const slides = {
     </li>,
     <li key={nanoid()} className={styles.slide}>
       <div className={`${styles.videoContainer} ${styles.sewing}`}>
-        <video autoPlay muted loop playsInline controls={false}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={false}
+          poster='/sewing.png'
+        >
           <source src='/sewing.webm' type='video/webm' />
           <source src='/sewing.mp4' type='video/mp4' />
         </video>
@@ -136,7 +193,15 @@ const slides = {
         </div>
       </div>
       <div className={styles.videoContainer}>
-        <video autoPlay muted loop playsInline controls={false}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={false}
+          poster='/cup.png'
+        >
+          <source src='/cup.webm' type='video/webm' />
           <source src='/cup.mp4' type='video/mp4' />
         </video>
         <div className={styles.backdrop} />
@@ -153,7 +218,14 @@ const HomePage = () => {
   return (
     <Layout className={styles.homePage}>
       <header className={styles.hero}>
-        <video autoPlay muted loop playsInline controls={false}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={false}
+          poster='/hero.png'
+        >
           <source src='/hero.webm' type='video/webm' />
           <source src='/hero.mp4' type='video/mp4' />
         </video>
